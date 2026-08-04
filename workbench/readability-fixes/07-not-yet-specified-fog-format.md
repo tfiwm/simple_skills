@@ -32,4 +32,4 @@ And note: each bullet should be a single question or area that the model can lat
 
 ## Status
 
-Not yet implemented.
+Applied. Added placeholder bullets to the "Not yet specified" template and tightened the prose to specify one bullet per area with one question per line.

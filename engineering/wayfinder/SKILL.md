@@ -47,6 +47,9 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 <!-- see "Fog of war": in-scope fog you can't ticket yet; graduates as the frontier advances. Remove this comment before saving. -->
 
+- <One unresolved area or suspected question per bullet, plain English>
+- <Another area — one question per line>
+
 ## Out of scope
 
 <!-- see "Out of scope": work ruled beyond the destination; closed, never graduates. Remove this comment before saving. -->
@@ -88,7 +91,7 @@ Every ticket is either **HITL** — human in the loop, worked *with* a human who
 
 The map is _deliberately_ incomplete: don't chart what you can't yet see. Beyond the live tickets lies the **fog of war** — the dim view of decisions and investigations you can tell are coming but can't yet pin down, because they hang on questions still open. Resolving a ticket clears the fog ahead of it, graduating whatever's now specifiable into fresh tickets — one at a time, until the way to the destination is clear and no tickets remain.
 
-The map's **Not yet specified** section is where that dim view is written down: the suspected question, the area to revisit later. It's the undiscovered frontier _toward_ the destination — everything here is in scope, just not sharp enough to ticket. Write as loosely or as fully as the view allows; it doubles as a signpost for collaborators reading where the effort is headed.
+The map's **Not yet specified** section is where that dim view is written down: one bullet per unresolved area or suspected question, in the format shown in the map template. It's the undiscovered frontier _toward_ the destination — everything here is in scope, just not sharp enough to ticket. When a resolution makes a bullet specifiable, graduate the entire bullet — don't partially clear it.
 
 **Fog or ticket?** The test is whether you can state the question precisely now — _not_ whether you can answer it now.
 
