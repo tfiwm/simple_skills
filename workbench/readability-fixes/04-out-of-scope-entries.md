@@ -27,4 +27,4 @@ And note: entries here are scope boundaries, not decisions — the language shou
 
 ## Status
 
-Not yet implemented.
+Applied. Added placeholder lines (ticket-linked and non-ticket) to the "Out of scope" template and updated the prose to describe both entry types.

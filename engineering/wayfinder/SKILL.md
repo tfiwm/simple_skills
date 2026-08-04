@@ -50,6 +50,9 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 ## Out of scope
 
 <!-- see "Out of scope": work ruled beyond the destination; closed, never graduates. Remove this comment before saving. -->
+
+- [<closed ticket title>](link) — <why this sits beyond the destination>
+- Ruled out: <why, in plain English>
 ```
 
 ### Tickets
@@ -98,7 +101,7 @@ Fog only ever gathers _toward_ the destination. The destination fixes the scope,
 
 Out-of-scope work never graduates — the frontier stops at the destination — so it returns only if the destination is redrawn, and then as a fresh effort, not a resumption.
 
-Ruling something out of scope is a scoping act, not a step on the route. When a ticket that already exists turns out to sit past the destination — mis-scoped in while charting, or exposed by a resolution — **close it** (a closed ticket is unambiguously off the frontier) and leave one line in the **Out of scope** section: the gist plus why it's out of scope, linking the closed ticket. It stays out of **Decisions so far**, which records the route actually walked — a scope boundary isn't a step on it.
+Ruling something out of scope is a scoping act, not a step on the route. When a ticket that already exists turns out to sit past the destination — mis-scoped in while charting, or exposed by a resolution — **close it** (a closed ticket is unambiguously off the frontier) and leave one line in the **Out of scope** section (in the format shown in the map template): `- [<closed ticket title>](link) — <why this sits beyond the destination>`. If you consciously rule something out of scope without a ticket, use: `- Ruled out: <why>`. These entries stay out of **Decisions so far**, which records the route actually walked — a scope boundary isn't a step on it.
 
 ## Invocation
 
