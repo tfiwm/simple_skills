@@ -34,4 +34,4 @@ Keep it minimal. The detail lives in linked artifacts (research file, prototype 
 
 ## Status
 
-Not yet implemented.
+Applied. Added a resolution comment template after step 4 in `engineering/wayfinder/SKILL.md`. Template shows `## Answer` with a 1–2 sentence verdict in plain English.
