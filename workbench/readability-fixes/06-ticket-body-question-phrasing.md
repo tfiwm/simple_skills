@@ -36,4 +36,4 @@ And add guidance: use "Should...", "Which...", "Does...", "How should..." — qu
 
 ## Status
 
-Not yet implemented.
+Applied. Replaced the ticket question placeholder with phrasing guidance and a comment listing example question words.

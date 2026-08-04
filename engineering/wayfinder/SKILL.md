@@ -62,7 +62,9 @@ Each ticket is a **child issue** of the map; the tracker's issue id is its ident
 ```markdown
 ## Question
 
-<the decision or investigation this ticket resolves>
+<Phrase as a single, clear question in plain English. What is the one thing this ticket will decide or find out?>
+
+<!-- Use question words ("Should", "Which", "Does", "How should", etc.) that frame a decision. Avoid descriptions masquerading as questions. Remove this comment before saving. -->
 ```
 
 Each ticket carries a `wayfinder:<type>` label — one of `research`, `prototype`, `grilling`, `task` (see [Ticket Types](#ticket-types)).
