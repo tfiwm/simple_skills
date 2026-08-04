@@ -47,5 +47,5 @@ Redis is the better fit: it supports native clustering, TTLs, and data structure
 
 ## Status
 
-Not yet implemented.
+Applied. Added Summary + Findings structure guidance and a template example after step 2 in `engineering/research/SKILL.md`.
 ```
