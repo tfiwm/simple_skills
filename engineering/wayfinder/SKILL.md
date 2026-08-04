@@ -39,17 +39,17 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 ## Decisions so far
 
-<!-- the index — one entry per closed ticket: enough to judge relevance, then zoom the link for the detail the ticket holds. Front-load the verdict, use plain English, no jargon, under ~25 words. -->
+<!-- the index — one entry per closed ticket: enough to judge relevance, then zoom the link for the detail the ticket holds. Front-load the verdict, use plain English, no jargon, under ~25 words. Remove this comment before saving. -->
 
 - [<closed ticket title>](link) — <verdict-first gist, under ~25 words>
 
 ## Not yet specified
 
-<!-- see "Fog of war": in-scope fog you can't ticket yet; graduates as the frontier advances -->
+<!-- see "Fog of war": in-scope fog you can't ticket yet; graduates as the frontier advances. Remove this comment before saving. -->
 
 ## Out of scope
 
-<!-- see "Out of scope": work ruled beyond the destination; closed, never graduates -->
+<!-- see "Out of scope": work ruled beyond the destination; closed, never graduates. Remove this comment before saving. -->
 ```
 
 ### Tickets

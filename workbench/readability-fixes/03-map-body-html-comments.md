@@ -41,4 +41,4 @@ Replace the HTML comments with one of:
 
 ## Status
 
-Not yet implemented.
+Applied (Option B). Appended "Remove this comment before saving." to each HTML comment in the map body template (`engineering/wayfinder/SKILL.md:42,48,52`).
