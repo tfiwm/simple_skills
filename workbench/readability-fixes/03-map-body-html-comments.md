@@ -38,3 +38,7 @@ Replace the HTML comments with one of:
 - **Option B:** Explicit `> Remove this comment before saving.` appended to each instruction comment, making it clear the comment is meta-instruction.
 
 - **Option C:** Move all structural instructions out of the template and into the surrounding prose, leaving only format markers and placeholder text in the template body.
+
+## Status
+
+Not yet implemented.

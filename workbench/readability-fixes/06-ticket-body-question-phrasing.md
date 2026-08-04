@@ -33,3 +33,7 @@ Replace the instruction with an explicit format requirement:
 ```
 
 And add guidance: use "Should...", "Which...", "Does...", "How should..." — question words that frame a decision. Avoid descriptions masquerading as questions.
+
+## Status
+
+Not yet implemented.

@@ -29,3 +29,7 @@ Add a format instruction:
 ```
 
 And note: each bullet should be a single question or area that the model can later check against resolutions (can this be ticketed now?). If an answer makes a bullet specifiable, graduate the *entire bullet* — don't partially clear it.
+
+## Status
+
+Not yet implemented.

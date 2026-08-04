@@ -24,3 +24,7 @@ Add a template:
 ```
 
 And note: entries here are scope boundaries, not decisions — the language should reflect that ("ruled out because...", "beyond destination because...").
+
+## Status
+
+Not yet implemented.

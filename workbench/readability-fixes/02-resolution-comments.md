@@ -31,3 +31,7 @@ Add a template for resolution comments:
 ```
 
 Keep it minimal. The detail lives in linked artifacts (research file, prototype branch, ticket comments). The comment itself is a signpost, not a store.
+
+## Status
+
+Not yet implemented.

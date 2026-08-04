@@ -28,3 +28,7 @@ And add a contrasting example to the `## Rules` section:
 
 Good: "**Order**: A request from a customer to purchase one or more products."
 Avoid: "**Order**: An aggregate root within the ordering context that orchestrates the lifecycle of a purchase transaction via domain events."
+
+## Status
+
+Not yet implemented.

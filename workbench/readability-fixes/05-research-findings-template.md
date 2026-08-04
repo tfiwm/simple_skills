@@ -44,4 +44,8 @@ Redis is the better fit: it supports native clustering, TTLs, and data structure
 - Redis supports cluster mode natively, which handles multi-region replication without client-side sharding. (https://redis.io/docs/management/scaling/)
 - Memcached has no built-in clustering — it relies on consistent-hashing at the client level. (https://memcached.org/documentation)
 - Redis supports TTLs per key and multiple data types (strings, hashes, lists). Memcached is key-value only with TTLs. (https://redis.io/docs/data-types/)
+
+## Status
+
+Not yet implemented.
 ```
