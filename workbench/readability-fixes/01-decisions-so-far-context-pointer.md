@@ -37,3 +37,7 @@ Example to avoid:
 ```
 - [Cache provider decision](https://...) — After evaluating Redis, Memcached, and Hazelcast against our multi-region requirement, considering operational overhead and cost, the decision was made to proceed with Redis Cluster due to its native sharding support and team familiarity.
 ```
+
+## Status
+
+Applied. Updated the HTML comment and placeholder in `engineering/wayfinder/SKILL.md` (commit `58aa20e`). The ~15 word limit was raised to ~25 per discussion.

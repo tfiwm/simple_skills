@@ -39,9 +39,9 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 ## Decisions so far
 
-<!-- the index — one line per closed ticket: enough to judge relevance, then zoom the link for the detail the ticket holds -->
+<!-- the index — one entry per closed ticket: enough to judge relevance, then zoom the link for the detail the ticket holds. Front-load the verdict, use plain English, no jargon, under ~25 words. -->
 
-- [<closed ticket title>](link) — <one-line gist of the answer>
+- [<closed ticket title>](link) — <verdict-first gist, under ~25 words>
 
 ## Not yet specified
 
