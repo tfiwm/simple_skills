@@ -31,4 +31,4 @@ Avoid: "**Order**: An aggregate root within the ordering context that orchestrat
 
 ## Status
 
-Not yet implemented.
+Applied. Added a "Use plain English" rule with contrasting examples to `engineering/domain-modeling/CONTEXT-FORMAT.md`.
