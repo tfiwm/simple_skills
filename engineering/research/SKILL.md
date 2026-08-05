@@ -24,4 +24,4 @@ Its job:
    ```
 
    The Summary is the verdict — a reader should grasp the answer in seconds. The Findings are the evidence behind it.
-3. Save it where the repo already keeps such notes; match the existing convention, and if there is none, put it somewhere sensible and say where.
+3. Save it where the repo already keeps such notes; match the existing convention, and if there is none, put it somewhere sensible and say where. If the caller names a specific path — as `/wayfinder` does — save there.
