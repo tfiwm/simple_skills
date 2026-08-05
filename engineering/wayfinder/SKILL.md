@@ -110,7 +110,24 @@ Ruling something out of scope is a scoping act, not a step on the route. When a 
 
 ## Invocation
 
-Two modes. Either way, **never resolve more than one ticket per session** — with the exception of research tickets.
+Two modes. Either way, resolve at most one non-research ticket per session. Research tickets are the one exception: you may resolve any number in a session, always via the shared research procedure. Resolve at most three research tickets in parallel.
+
+### Resolve a research ticket
+
+Research tickets are AFK — a `/research` subagent resolves them, never your own hand. Both modes use this procedure.
+
+1. **Claim the ticket.** Assign it to yourself before any work, so a concurrent session skips it. A batch claims each of its tickets up front.
+2. **Name the save path.** The findings file lives at `research/NN-<slug>.md`, mirroring the ticket's number. The local tracker doc names the exact path; on GitHub and GitLab, name the path yourself and record it. Link the file back to its ticket.
+3. **Spin up the subagent.** Run a `/research` subagent on the ticket's question, telling it the save path. It returns the path it saved and the verdict sentence from its Summary.
+4. **Record the resolution.** On its return, post the `## Answer` comment — the verdict plus a link to the research file — **close** the ticket, and **append a context pointer** to the map's Decisions-so-far.
+
+   ```markdown
+   ## Answer
+
+   <1–2 sentence verdict in plain English: what was decided or found, and why in brief.>
+   ```
+
+   The Decisions-so-far append is the one shared write. Fetch the map fresh before appending; if another session appended since your last fetch, re-read and append after it.
 
 ### Chart the map
 
@@ -120,23 +137,17 @@ User invokes with a loose idea.
 2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** — the way to the destination is already clear, the whole journey small enough for one session — you don't need a map. Stop and ask the user how they'd like to proceed.
 3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map — then wire blocking edges in a **second pass** (issues need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog — the **Not yet specified** section.
-5. **Fire the research subagents.** For each `research` ticket you just created, spin up a `/research` subagent to resolve it in parallel. Each subagent saves its findings to the map's `research/` subdirectory as a Markdown file — the tracker doc names the exact path and filename — and the file links back to its ticket.
-6. Stop — charting is one session's work; it hand-resolves nothing.
+5. **Offer the research batch.** Tell the user how many research tickets you just created, then ask them, as a **multi-choice**, which to resolve now — one option per ticket, by name. Resolve at most **three** in parallel via the shared research procedure. Tickets the user doesn't pick stay on the frontier for a later session.
+6. Stop — charting is one session's work; it hand-resolves no HITL ticket. Research tickets the user chose were resolved by the batch in step 5.
 
 ### Work through the map
 
-User invokes with a map (URL or number). A ticket is **optional** — without one, you pick the next decision, not the user.
+User invokes with a map (URL or number). A ticket is **optional** — without one, you pick the next decision, not the user. If the user names a non-research ticket while research tickets are also eligible, resolve the named ticket and offer the research ones too — ask the user, as a multi-choice, which to resolve in parallel, at most three, via the shared research procedure.
 
 1. Load the **map** — the low-res view, not every ticket body.
 2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket in order. **Claim it**: assign it to yourself before any work.
-3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/grilling` and `/domain-modeling`.
-4. Record the resolution: post the answer as a **resolution comment**, **close** the issue, and **append a context pointer** to the map's Decisions-so-far.
-
-   ```markdown
-   ## Answer
-
-   <1–2 sentence verdict in plain English: what was decided or found, and why in brief.>
-   ```
+3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/grilling` and `/domain-modeling`. If the chosen ticket is a `research` ticket, resolve it via the shared research procedure instead of hand-writing the answer.
+4. Record the resolution — not for a `research` ticket, which the shared research procedure already recorded: post the answer as a **resolution comment** in the `## Answer` format from the shared procedure, **close** the issue, and **append a context pointer** to the map's Decisions-so-far. The append is the one shared write — fetch the map fresh before appending, and if another session appended since your last fetch, re-read and append after it.
 
    Keep it minimal. The detail lives in linked artifacts (research file, prototype branch, ticket comments). The comment itself is a signpost, not a store.
 5. Add newly-surfaced tickets (create-then-wire); graduate any fog the answer has made specifiable, clearing each graduated patch from **Not yet specified** so it lives only as its new ticket. If the answer reveals a ticket — this one or another — sits beyond the destination, **rule it out of scope** rather than resolving it on the route. If the decision invalidates other parts of the map, update or delete those tickets.
