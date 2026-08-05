@@ -145,7 +145,7 @@ User invokes with a loose idea.
 User invokes with a map (URL or number). A ticket is **optional** — without one, you pick the next decision, not the user. If the user names a non-research ticket while research tickets are also eligible, resolve the named ticket and offer the research ones too — ask the user, as a multi-choice, which to resolve in parallel, at most three, via the shared research procedure.
 
 1. Load the **map** — the low-res view, not every ticket body.
-2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket in order. **Claim it**: assign it to yourself before any work.
+2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket the tracker's frontier query returns. **Claim it**: assign it to yourself before any work.
 3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/grilling` and `/domain-modeling`. If the chosen ticket is a `research` ticket, resolve it via the shared research procedure instead of hand-writing the answer.
 4. Record the resolution — not for a `research` ticket, which the shared research procedure already recorded: post the answer as a **resolution comment** in the `## Answer` format from the shared procedure, **close** the issue, and **append a context pointer** to the map's Decisions-so-far. The append is the one shared write — fetch the map fresh before appending, and if another session appended since your last fetch, re-read and append after it.
 
