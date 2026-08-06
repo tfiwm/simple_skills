@@ -20,9 +20,9 @@ Every map and ticket is an issue, so it has a **name** — its title. In everyth
 
 The map is a single issue on this repo's issue tracker, labelled `wayfinder:map` — the canonical artifact. Its tickets are child issues of the map.
 
-The map is an **index**, not a store. It lists the decisions made and points at the tickets that hold their detail; a decision lives in exactly one place — its ticket — so the map never restates it, only gists it and links.
+The map is an **index**, not a store. It lists the decisions made and points at the tickets that hold their detail; a decision lives in exactly one place — its ticket — so the map never restates it, only summarizes it and links.
 
-**Where the map, its child tickets, blocking, and frontier queries physically live is tracker-specific.** The issue tracker should have been provided to you — run `/setup-matt-pocock-skills` if not. Read `docs/agents/issue-tracker.md` for the tracker in use. Consult its "Wayfinding operations" section for how _this_ repo expresses them. If the tracker doc has no "Wayfinding operations" section, work from its prose and mirror the local-markdown conventions it describes. If no tracker has been provided, default to the local-markdown tracker.
+**Where the map, its child tickets, blocking, and frontier queries physically live is tracker-specific.** The **frontier** is the open, unblocked, unclaimed child tickets — the edge of the known. The issue tracker should have been provided to you — run `/setup-matt-pocock-skills` if not. Read `docs/agents/issue-tracker.md` for the tracker in use. Consult its "Wayfinding operations" section for how _this_ repo expresses them. If the tracker doc has no "Wayfinding operations" section, work from its prose and mirror the local-markdown conventions it describes. If no tracker has been provided, default to the local-markdown tracker.
 
 ### The map body
 
@@ -39,13 +39,13 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 ## Decisions so far
 
-<!-- the index — one entry per closed ticket: enough to judge relevance, then zoom the link for the detail the ticket holds. Front-load the verdict, use plain English, no jargon, under ~25 words. Remove this comment before saving. -->
+<!-- the index — one entry per closed ticket: enough to judge relevance, then fetch the full body of the linked ticket for the detail it holds. Front-load the verdict, use plain English, no jargon, under ~25 words. Remove this comment before saving. -->
 
 - [<closed ticket title>](link) — <verdict-first gist, under ~25 words>
 
 ## Not yet specified
 
-<!-- see "Fog of war": in-scope fog you can't ticket yet; graduates as the frontier advances. Remove this comment before saving. -->
+<!-- see "Fog of war": in-scope fog you can't ticket yet; it graduates — turns an area of fog into one or more concrete tickets — as the frontier advances. Remove this comment before saving. -->
 
 - <One unresolved area or suspected question per bullet, plain English>
 - <Another area — one question per line>
@@ -74,7 +74,7 @@ Each ticket carries a `wayfinder:<type>` label — one of `research`, `prototype
 
 A session **claims** a ticket by assigning it to the dev driving the map, **first**, before any work, so concurrent sessions skip it. That assignee _is_ the claim: an open, unassigned ticket is unclaimed. If you claim a ticket and cannot resolve it in this session, say so plainly. Remove the claim — un-assign the ticket, or clear its `Status: claimed` — so the frontier can pick it up.
 
-Blocking uses the tracker's **native** dependency relationship — essential because it renders the frontier _visually_ in the tracker's own UI, so the human sees what's takeable without opening the map. Only a tracker that lacks native blocking falls back to a body convention. A ticket is **unblocked** when every ticket blocking it is closed; the **frontier** is the open, unblocked, unclaimed children — the edge of the known.
+Blocking uses the tracker's **native** dependency relationship — essential because it renders the frontier _visually_ in the tracker's own UI, so the human sees what's takeable without opening the map. Only a tracker that lacks native blocking falls back to a body convention. A ticket is **unblocked** when every ticket blocking it is closed.
 
 The answer isn't part of the body — it's recorded on resolution (see [Work through the map](#work-through-the-map)). Assets created while resolving a ticket are linked from the issue, not pasted in.
 
@@ -146,7 +146,7 @@ User invokes with a map (URL or number). A ticket is **optional** — without on
 
 1. Load the **map** — the low-res view, not every ticket body.
 2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket the tracker's frontier query returns. **Claim it**: assign it to yourself before any work.
-3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/grilling` and `/domain-modeling`. If the chosen ticket is a `research` ticket, resolve it via the shared research procedure instead of hand-writing the answer.
+3. Resolve it — **fetch the full body as needed**: read any related or closed ticket in full; invoke the skills the `## Notes` block names. If in doubt, use `/grilling` and `/domain-modeling`. If the chosen ticket is a `research` ticket, resolve it via the shared research procedure instead of hand-writing the answer.
 4. Record the resolution — not for a `research` ticket, which the shared research procedure already recorded: post the answer as a **resolution comment** in the `## Answer` format from the shared procedure, **close** the issue, and **append a context pointer** to the map's Decisions-so-far. The append is the one shared write — fetch the map fresh before appending, and if another session appended since your last fetch, re-read and append after it.
 
    Keep it minimal. The detail lives in linked artifacts (research file, prototype branch, ticket comments). The comment itself is a signpost, not a store.
