@@ -18,6 +18,20 @@ Ground every claim in fetched or observed evidence. Cite a source only after you
 memory. Label any claim you could not verify, right beside the claim, for example: "unverified: the official
 changelog could not be fetched".
 
+When two trusted sources disagree, first find the cause: different versions, different variants (cloud or
+self-hosted, free or paid tier), or a genuinely contested fact. Report each side with its date or version, and never
+blend the two into one claim. Prefer the current official source when one side is outdated. When the disagreement
+survives after ruling out version and variant differences, treat the fact as contested. Present both sides in the
+Findings, or record the conflict in Gaps when it blocks the answer. For example, the current docs say a flag exists
+and a tutorial says it does not. The cause is version skew: the flag shipped in v2.4, the tutorial covers v2.1. Good
+report: "the flag shipped in v2.4 (official docs); the tutorial targets v2.1, which predates it". Bad report: "the
+flag exists in some versions".
+
+Check every source for staleness: a source is stale when the thing it describes has moved past it. Confirm currency
+with the signal the domain offers: changelogs and release notes for software, revision status for standards, effective
+dates for policies and terms. Note which version, revision, or date each finding applies to, so a future reader can
+judge it later. Prefer a live page over an archived copy, and say so when only an archived copy exists.
+
 First do a breadth first pass to understand the trunk of the research question and its immediate branches. Then do a 
 depth pass to explore trunk, its branches and sub-branches. The depth pass ends when the question is
 answered, or when every branch still open is blocked. Record each blocked branch and its blocker in the Gaps
