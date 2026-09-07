@@ -39,18 +39,19 @@ trunk or off another branch. A branch that splits off a branch is a sub-branch. 
 structure of trunk and branches.
 
 First do a breadth first pass to understand the trunk of the research question and its immediate branches. Then do a 
-depth pass to explore trunk, its branches and sub-branches. The depth pass ends when the question is
+depth pass to explore the trunk, its branches and sub-branches. The depth pass ends when the question is
 answered, or when every branch still open is blocked. Record each blocked branch and its blocker in the Gaps
-section of the findings file. If question itself or first pass uncovers distinct groups or domains that are not 
+section of the findings file. If the question itself or the first pass uncovers distinct groups or domains that are not 
 connected, treat each of those as different trees.
 
-Prepare research findings in the following markdown format, citing each claim's source. The text within `<>` is 
-embedded instructions within the template format. Replace `<>` according to the instruction it represents. If the caller 
-gives specific instructions on where to save the research findings, follow that. If not, save the research findings as 
-`docs/research/<id>_<meaningful_name>.md`.
-`<id>` is a two-digit number, one greater than the largest `<id>` among files in `docs/research/`.
-Use `01` when the folder has no numbered files. Zero-pad it: `07`, not `7`.
-If the next number is taken, or the largest is `99`, keep counting (three digits allowed).
+Prepare research findings in the following markdown format. Cite the source of each claim. The text within `<>` is 
+embedded instructions within the template format. Replace `<>` according to the instruction it represents.
+
+If the caller gives specific instructions on where to save the research findings, follow that. If not, save the 
+research findings as `docs/research/<id>_<meaningful_name>.md`. `<id>` is a two-digit number, one greater than the 
+largest `<id>` among files in `docs/research/`. Use `01` when the folder has no numbered files. Zero-pad it: `07`, 
+not `7`. If the next number is taken, or the largest is `99`, keep counting (three digits allowed).
+
 Upon research completion (regardless of success or failure), return this block to your caller:
 
 - Verdict: <the Summary sentence, verbatim>
