@@ -1,6 +1,6 @@
 ---
 name: research
-description: Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.
+description: Investigate a question against primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.
 ---
 
 Spin up a research agent in the **background** whose job is as follows:
@@ -38,10 +38,10 @@ The trunk is the core question the research must answer. A branch is one distinc
 trunk or off another branch. A branch that splits off a branch is a sub-branch. A tree is one independent
 structure of trunk and branches.
 
-First do a breadth first pass to understand the trunk of the research question and its immediate branches. Then do a 
+First do a breadth pass to understand the trunk of the research question and its immediate branches. Then do a 
 depth pass to explore the trunk, its branches and sub-branches. The depth pass ends when the question is
 answered, or when every branch still open is blocked. Record each blocked branch and its blocker in the Gaps
-section of the findings file. If the question itself or the first pass uncovers distinct groups or domains that are not 
+section of the findings file. If the question itself or the breadth pass uncovers distinct groups or domains that are not 
 connected, treat each of those as different trees.
 
 Prepare research findings in the following markdown format. Cite the source of each claim. The text within `<>` is 
