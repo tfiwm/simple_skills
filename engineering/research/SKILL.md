@@ -1,7 +1,9 @@
 ---
 name: research
-description: Investigate a question against primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.
+description: Researches a question against primary sources when the user wants a topic researched, docs or API facts gathered, or reading legwork done. Trivial lookups get an inline answer; bigger questions get a background agent and a saved findings file.
 ---
+
+Spawn the background research agent only when the question needs multiple sources or a saved findings file. Answer trivial lookups inline instead, under the same rules: cite a source only after you fetch and read it, and label any claim you could not verify.
 
 Spin up a research agent in the **background** whose job is as follows:
 
