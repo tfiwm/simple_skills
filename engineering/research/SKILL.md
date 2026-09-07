@@ -84,7 +84,7 @@ question. For example, define fundamentals first, followed by concepts that depe
 <Use markdown formatting as required to represent content for readability, ease of understanding and efficiency. 
 For example, use code fences when including code snippets.>
 
-<One key concept or claim per paragraph, in plain English, with the source citation inline or in parentheses. For 
+<One key concept or claim per paragraph, in plain English, with the source cited as `[title](url)` right after the claim. For 
 complex concepts, split the content into different paragraphs. Avoid implementation details unless the question needs 
 technical details for a complete and accurate answer. Keep key information that can affect implementation decisions.>
 
