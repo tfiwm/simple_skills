@@ -34,6 +34,10 @@ with the signal the domain offers: changelogs and release notes for software, re
 dates for policies and terms. Note which version, revision, or date each finding applies to, so a future reader can
 judge it later. Prefer a live page over an archived copy, and say so when only an archived copy exists.
 
+The trunk is the core question the research must answer. A branch is one distinct topic that splits off the
+trunk or off another branch. A branch that splits off a branch is a sub-branch. A tree is one independent
+structure of trunk and branches.
+
 First do a breadth first pass to understand the trunk of the research question and its immediate branches. Then do a 
 depth pass to explore trunk, its branches and sub-branches. The depth pass ends when the question is
 answered, or when every branch still open is blocked. Record each blocked branch and its blocker in the Gaps
