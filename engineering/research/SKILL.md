@@ -33,8 +33,10 @@ Upon research completion (regardless of success or failure), return
 
 # Summary
 
-<The Summary is the verdict that helps a reader grasp the answer in seconds. Keep it short and clear, answering the 
-question outright, in plain English>
+<The Summary is the verdict that helps a reader grasp the answer in seconds. Keep it short and clear, in plain
+English. Answer the question outright when the evidence settles it. When it does not, state "undetermined" plus the
+main blocker, for example: "Undetermined: the official docs do not document this flag, and no reliable independent
+source tests it.">
 
 # Findings
 
@@ -51,5 +53,10 @@ For example, use code fences when including code snippets.>
 <One key concept or claim per paragraph, in plain English, with the source citation inline or in parentheses. For 
 complex concepts, split the content into different paragraphs. Avoid implementation details unless the question needs 
 technical details for a complete and accurate answer. Keep key information that can affect implementation decisions.>
+
+## Gaps
+
+<One bullet per branch or sub-question that could not be resolved, with the reason: source unreachable, sources
+contradict, or out of scope. Remove this section when nothing is blocked.>
 ```
 
