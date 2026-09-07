@@ -14,9 +14,15 @@ considering reports on the compatibility, limitations, performance metrics etc.,
 the real world usage of the capability. Never use these secondary sources as the primary source of truth, always use 
 them as supplementary information.
 
+Ground every claim in fetched or observed evidence. Cite a source only after you fetch and read it. Never cite from
+memory. Label any claim you could not verify, right beside the claim, for example: "unverified: the official
+changelog could not be fetched".
+
 First do a breadth first pass to understand the trunk of the research question and its immediate branches. Then do a 
-depth pass to explore trunk, its branches and sub-branches as needed. If question itself or first pass uncovers distinct 
-groups or domains that are not connected, treat each of those as different trees.
+depth pass to explore trunk, its branches and sub-branches. The depth pass ends when the question is
+answered, or when every branch still open is blocked. Record each blocked branch and its blocker in the Gaps
+section of the findings file. If question itself or first pass uncovers distinct groups or domains that are not 
+connected, treat each of those as different trees.
 
 Prepare research findings in the following markdown format, citing each claim's source. The text within `<>` is 
 embedded instructions within the template format. Replace `<>` according to the instruction it represents. If the caller 
