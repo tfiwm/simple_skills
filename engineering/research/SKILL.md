@@ -67,8 +67,9 @@ verdict, low when the verdict is undetermined, an unverified claim carries it, o
 
 ## Summary
 
-<The Summary is the verdict that helps a reader grasp the answer in seconds. Keep it short and clear, in plain
-English. Answer the question outright when the evidence settles it. When it does not, state "undetermined" plus the
+<The Summary is the verdict that helps a reader grasp the answer in seconds. Keep it to 2-4 sentences, in plain
+English. Use more than 4 only when the question has more distinct parts; give each part its own sentence. Answer the
+question outright when the evidence settles it. When it does not, state "undetermined" plus the
 main blocker, for example: "Undetermined: the official docs do not document this flag, and no reliable independent
 source tests it.">
 
