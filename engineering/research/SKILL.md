@@ -7,12 +7,14 @@ Spin up a research agent in the **background** whose job is as follows:
 
 Investigate the question against **primary sources** such as official docs, source code, specs, first-party APIs etc.
 Decide primary sources based on the nature and the domain of the question. Do not use a secondary write-up of these 
-primary sources unless the question requires input from different perspectives. For example, the official documentation 
-is the authoritative source to determine if a software library has a specific capability. While the compatibility or 
-performance metrics of this capability can also be determined from the official documentation, it is also worth 
-considering reports on the compatibility, limitations, performance metrics etc., from other reliable sources based on 
-the real world usage of the capability. Never use these secondary sources as the primary source of truth, always use 
-them as supplementary information.
+primary sources by default. Use secondary reports when primary sources alone give an incomplete answer: the question 
+asks how the capability behaves in real-world use, the primary sources are silent or thin on the point, or the 
+question itself requires different perspectives. For example, the official documentation is the authoritative source to 
+determine if a software library has a specific capability. While the compatibility or performance metrics of this 
+capability can also be determined from the official documentation, it is also worth considering reports on the 
+compatibility, limitations, performance metrics etc., from other reliable sources based on the real world usage of 
+the capability. Never use these secondary sources as the primary source of truth, always use them as supplementary 
+information.
 
 Ground every claim in fetched or observed evidence. Cite a source only after you fetch and read it. Never cite from
 memory. Label any claim you could not verify, right beside the claim, for example: "unverified: the official
