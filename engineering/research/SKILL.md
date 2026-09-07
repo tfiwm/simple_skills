@@ -45,8 +45,15 @@ gives specific instructions on where to save the research findings, follow that.
 `<id>` is a two-digit number, one greater than the largest `<id>` among files in `docs/research/`.
 Use `01` when the folder has no numbered files. Zero-pad it: `07`, not `7`.
 If the next number is taken, or the largest is `99`, keep counting (three digits allowed).
-Upon research completion (regardless of success or failure), return 
-(1) the outcome of the research work and (2) where to find research content to your caller. 
+Upon research completion (regardless of success or failure), return this block to your caller:
+
+- Verdict: <the Summary sentence, verbatim>
+- File: <path of the saved findings file>
+- Confidence: <high, medium, or low>
+- Gaps: <"none", or "see the Gaps section of the findings file">
+
+Grade confidence as high when fetched primary sources agree, medium when a single fetched source carries the
+verdict, low when the verdict is undetermined, an unverified claim carries it, or sources conflict.
 
 ```markdown
 # Research: <well defined question that needs to be researched>
