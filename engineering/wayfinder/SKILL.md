@@ -72,7 +72,7 @@ Each ticket is a **child issue** of the map; the tracker's issue id is its ident
 
 Each ticket carries a `wayfinder:<type>` label, one of `research`, `prototype`, `grilling`, `task` (see [Ticket Types](#ticket-types)).
 
-A session **claims** a ticket by assigning it to the dev driving the map, **first**, before any work, so concurrent sessions skip it. That assignee _is_ the claim: an open, unassigned ticket is unclaimed. If you claim a ticket and cannot resolve it in this session, say so plainly. Remove the claim, un-assign the ticket, or clear its `Status: claimed`, so the frontier can pick it up.
+A session **claims** a ticket **first**, before any work, with the tracker's claim operation, so concurrent sessions skip it. An open, unclaimed ticket is takeable. If you claim a ticket and cannot resolve it in this session, say so plainly. Release the claim with the tracker's reverse operation, so the frontier can pick it up.
 
 Blocking uses the tracker's **native** dependency relationship because it renders the frontier _visually_ in the tracker's own UI, so the human sees what's takeable without opening the map. Only a tracker that lacks native blocking falls back to a body convention. A ticket is **unblocked** when every ticket blocking it is closed.
 
@@ -137,7 +137,7 @@ User invokes with a loose idea.
 User invokes with a map (URL or number). Tickets are **optional**, without them, you pick, not the user.
 
 1. Load the **map**, the low-res view, not every ticket body.
-2. Choose tickets. If the user named tickets, use them: one ticket of any type, or up to three research tickets. Otherwise take the first frontier ticket the tracker's frontier query returns. If it is research, you may take up to two more unblocked research tickets to fill a batch of three. **Claim each** before any work: assign it to yourself so a concurrent session skips it.
+2. Choose tickets. If the user named tickets, use them: one ticket of any type, or up to three research tickets. Otherwise take the first frontier ticket the tracker's frontier query returns. If it is research, you may take up to two more unblocked research tickets to fill a batch of three. **Claim each** with the tracker operation before any work.
 3. Resolve by type, after you **fetch full body of each ticket**. If needed, fetch the full body of any related or closed tickets as well.
    - Research (AFK) never resolves by your own hand. Run one subagent per ticket that calls the Skill tool with `research` on the ticket's question. Name the save path from the tracker's Wayfinding operations; if it names none, use the research default. The subagent runs the research itself and returns its Verdict-File-Confidence-Gaps block.
    - Other types: invoke the skills the `## Notes` block names, if any. If in doubt, call the Skill tool twice, once with `grilling` and once with `domain-modeling`.
