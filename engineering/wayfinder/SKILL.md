@@ -4,13 +4,13 @@ description: Plan a huge chunk of work, more than one agent session can hold, as
 disable-model-invocation: true
 ---
 
-A loose idea has arrived, too big for one agent session, and wrapped in fog, the way from here to the **destination** isn't visible yet. Wayfinding is about finding that way, not charging at the destination. This skill charts the way as a **shared map** on the repo's issue tracker, then works its **decision tickets**, questions whose resolution is a decision, not slices of a build to execute, one at a time until the route is clear.
+A loose idea has arrived, too big for one agent session, and wrapped in fog, the way from here to the **destination** isn't visible yet. Wayfinding is about finding that way, not charging at the destination. This skill charts the way as a **shared map** on the repo's issue tracker. Then it works its tickets one at a time until the route is clear. Most tickets are **decision tickets**, questions whose resolution is a decision, not slices of a build to execute. One type, Task, is enabling work a decision waits on.
 
 The destination varies per effort, and naming it is the first act of charting, it shapes every ticket. It might be a spec to hand off and iterate on, or a decision to lock before planning starts. The map is domain-agnostic: engineering work, course content, whatever fits the shape.
 
 ## Plan, don't do
 
-Wayfinder is **planning** by default: each ticket resolves a decision, and the map is done when the way is clear, nothing left to decide before someone goes and does the thing. The pull to just do the work is usually the signal you've reached the edge of the map and it's time to hand off. Produce decisions, not deliverables.
+Wayfinder is **planning** by default. Most tickets resolve a decision. Task completes enabling work a decision waits on. The map is done when the way is clear, nothing left to decide before someone goes and does the thing. The pull to just do the work is usually the signal you've reached the edge of the map. Then it's time to hand off. Produce decisions, not deliverables.
 
 ## Refer by name
 
