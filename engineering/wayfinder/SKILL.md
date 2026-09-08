@@ -118,8 +118,8 @@ Research tickets are AFK; a `/research` subagent resolves them, never your own h
 
 1. **Claim the ticket.** Assign it to yourself before any work, so a concurrent session skips it. A batch claims each of its tickets up front.
 2. **Name the save path.** Use the path the tracker's Wayfinding operations names.
-3. **Spin up the subagent.** Run a `/research` subagent on the ticket's question with that save path. It saves there, links back to its ticket, and returns the path plus the verdict sentence from its Summary.
-4. **Record the resolution.** On its return, post the `## Answer` comment, the verdict plus a link to the research file, **close** the ticket, and **append a context pointer** to the map's Decisions-so-far.
+3. **Spin up the subagent.** Run a `/research` subagent on the ticket's question with that save path. It saves there, links back to its ticket, and returns its Verdict-File-Confidence-Gaps block.
+4. **Record the resolution.** On its return, post the `## Answer` comment with the verdict plus a link to the file, **close** the ticket, and **append a context pointer** with confidence to the map's Decisions-so-far. Carry gaps into fog and follow-up tickets.
 
    ```markdown
    ## Answer
