@@ -10,7 +10,7 @@ The destination varies per effort, and naming it is the first act of charting, i
 
 ## Plan, don't do
 
-Wayfinder is **planning** by default. Most tickets resolve a decision. Task completes enabling work a decision waits on. The map is done when the way is clear, nothing left to decide before someone goes and does the thing. The pull to just do the work is usually the signal you've reached the edge of the map. Then it's time to hand off. Produce decisions, not deliverables.
+Wayfinder is **planning** by default. Most tickets resolve a decision. Task completes enabling work a decision waits on. The map is done when no open tickets remain and **Not yet specified** holds no bullets: nothing left to decide before someone goes and does the thing. The pull to just do the work is usually the signal you've reached the edge of the map. Then it's time to hand off. Produce decisions, not deliverables.
 
 ## Refer by name
 
@@ -89,7 +89,7 @@ Every ticket is either (1) **HITL** (human in the loop), worked *with* a human w
 
 ## Fog of war
 
-The map is _deliberately_ incomplete: don't chart what you can't yet see. Beyond the live tickets lies the **fog of war**, the dim view of decisions and investigations you can tell are coming but can't yet pin down, because they hang on questions still open. Resolving a ticket clears the fog ahead of it, graduating whatever's now specifiable into fresh tickets, one at a time, until the way to the destination is clear and no tickets remain.
+The map is _deliberately_ incomplete: don't chart what you can't yet see. Beyond the live tickets lies the **fog of war**, the dim view of decisions and investigations you can tell are coming but can't yet pin down, because they hang on questions still open. Resolving a ticket clears the fog ahead of it, graduating whatever's now specifiable into fresh tickets, one at a time, until no open tickets remain and **Not yet specified** is empty.
 
 The map's **Not yet specified** section is where that dim view is written down: one bullet per unresolved area or suspected question, in the format shown in the map template. It's the undiscovered frontier _toward_ the destination, everything here is in scope, just not sharp enough to ticket. When a resolution makes a bullet specifiable, graduate the entire bullet, don't partially clear it.
 
@@ -143,3 +143,4 @@ User invokes with a map (URL or number). Tickets are **optional**, without them,
    - Other types: invoke the skills the `## Notes` block names, if any. If in doubt, call the Skill tool twice, once with `grilling` and once with `domain-modeling`.
 4. Record each resolution. Post the `## Answer` comment with verdict plus file link for research. **Close** the ticket. Append a context pointer to the map's Decisions-so-far, with confidence for research. Keep it minimal. The detail lives in linked artifacts (research file, prototype branch, ticket comments). The comment itself is a signpost, not a store. Carry gaps into fog and follow-up tickets.
 5. Add newly-surfaced tickets (create-then-wire). Graduate any fog the answer has made specifiable. Clear each graduated patch from **Not yet specified** so it lives only as its new ticket. If this ticket or another sits beyond the destination, rule it out of scope. Do not resolve it on the route. If the decision invalidates other parts of the map, update or delete those tickets.
+6. Close the map when done. If no open tickets remain and **Not yet specified** is empty, the way is clear: close the map and tell the user. If no open tickets remain but fog bullets remain, the map is stuck, not done: leave the map open and report what still blocks graduation.
