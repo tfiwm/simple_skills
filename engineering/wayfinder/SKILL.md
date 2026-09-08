@@ -14,7 +14,7 @@ Wayfinder is **planning** by default. Most tickets resolve a decision. Task comp
 
 ## Refer by name
 
-Every map and ticket is an issue, so it has a **name**: its title. In everything the human reads (narration, the map's Decisions-so-far), refer to it by that name, never by a bare id, number, or slug. A wall of `#42, #43, #44` is illegible; names read at a glance. The id and URL don't vanish, a name wraps its link, but they ride *inside* the name, never stand in for it.
+Every map and ticket is an issue, so it has a **name**: its title. In everything the human reads (narration, the map's Decisions so far), refer to it by that name, never by a bare id, number, or slug. A wall of `#42, #43, #44` is illegible; names read at a glance. The id and URL don't vanish, a name wraps its link, but they ride *inside* the name, never stand in for it.
 
 ## The Map
 
@@ -120,15 +120,15 @@ Common rules apply to both modes below. A session claims a ticket first, before 
 <1–2 sentence verdict in plain English: what was decided or found, and why in brief.>
 ```
 
-The Decisions-so-far append is the one shared write. Fetch the map fresh before appending; if another session appended since your last fetch, re-read and append after it. The user may run unblocked tickets in parallel, so expect other sessions to edit the tracker concurrently.
+The Decisions so far append is the one shared write. Fetch the map fresh before appending; if another session appended since your last fetch, re-read and append after it. The user may run unblocked tickets in parallel, so expect other sessions to edit the tracker concurrently.
 
 ### Chart the map
 
 User invokes with a loose idea.
 
 1. **Name the destination.** Call the Skill tool twice, once with `grilling` and once with `domain-modeling`, to pin down what this map is finding its way to; the spec, decision, or change. The destination fixes the scope, so it's settled first.
-2. **Map the frontier.** Grill again,  this time, fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog**, the way to the destination is already clear, the whole journey small enough for one session, you don't need a map. Stop and ask the user how they'd like to proceed.
-3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
+2. **Map the frontier.** Grill again, this time, fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog**, the way to the destination is already clear, the whole journey small enough for one session, you don't need a map. Stop and ask the user how they'd like to proceed.
+3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions so far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map. Then wire blocking edges in a **second pass** (issues need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog, the **Not yet specified** section.
 5. Stop - charting builds the map and tickets; it resolves nothing. Tell the user how many research tickets await on the frontier.
 
@@ -141,6 +141,6 @@ User invokes with a map (URL or number). Tickets are **optional**, without them,
 3. Resolve by type, after you **fetch full body of each ticket**. If needed, fetch the full body of any related or closed tickets as well.
    - Research (AFK) never resolves by your own hand. Run one subagent per ticket that calls the Skill tool with `research` on the ticket's question. Name the save path from the tracker's Wayfinding operations; if it names none, use the research default. The subagent runs the research itself and returns its Verdict-File-Confidence-Gaps block.
    - Other types: invoke the skills the `## Notes` block names, if any. If none of those skills fit the question either, ask the user how to proceed.
-4. Record each resolution. Post the `## Answer` comment with verdict plus asset link (file link for research, prototype link for prototype). **Close** the ticket. Append a context pointer to the map's Decisions-so-far, with confidence for research. Keep it minimal. The detail lives in linked artifacts (research file, prototype link, ticket comments). The comment itself is a signpost, not a store. Carry gaps into fog and follow-up tickets.
-5. Add newly-surfaced tickets (create-then-wire). Graduate any fog the answer has made specifiable. Clear each graduated patch from **Not yet specified** so it lives only as its new ticket. If this ticket or another sits beyond the destination, rule it out of scope. Do not resolve it on the route. If the decision invalidates other parts of the map, close those tickets with the reason in their `## Answer`; never delete them.
+4. Record each resolution. Post the `## Answer` comment with verdict plus asset link (file link for research, prototype link for prototype). **Close** the ticket. Append a context pointer to the map's Decisions so far, with confidence for research. Keep it minimal. The detail lives in linked artifacts (research file, prototype link, ticket comments). The comment itself is a signpost, not a store. Carry gaps into fog and follow-up tickets.
+5. Add newly-surfaced tickets (Chart step 4's create-then-wire pattern: create first, wire blocking edges second). Graduate any fog the answer has made specifiable. Clear each graduated patch from **Not yet specified** so it lives only as its new ticket. If this ticket or another sits beyond the destination, rule it out of scope. Do not resolve it on the route. If the decision invalidates other parts of the map, close those tickets with the reason in their `## Answer`; never delete them.
 6. Close the map when done. If no open tickets remain and **Not yet specified** is empty, the way is clear: close the map and tell the user. If no open tickets remain but fog bullets remain, the map is stuck, not done: leave the map open and report what still blocks graduation.
