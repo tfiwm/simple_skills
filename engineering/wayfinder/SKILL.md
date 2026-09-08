@@ -20,7 +20,7 @@ Every map and ticket is an issue, so it has a **name**: its title. In everything
 
 The map is a single issue on this repo's issue tracker, labelled `wayfinder:map`, the canonical artifact. Its tickets are child issues of the map.
 
-The map is an **index**, not a store. It lists the decisions made and points at the tickets that hold their detail; a decision lives in exactly one place, its ticket, so the map never restates it, only summarizes it and links.
+The map is an **index**, not a store. Each ticket records its decision once in its `## Answer` comment. The map holds only a gist plus a link.
 
 **Where the map, its child tickets, blocking, and frontier queries physically live is tracker-specific.** The **frontier** is the open, unblocked, unclaimed child tickets, the edge of the known. The issue tracker should have been provided to you, if not, run `/setup-matt-pocock-skills`. Read `docs/agents/issue-tracker.md` for the tracker in use. Consult its "Wayfinding operations" section for how _this_ repo expresses them. If the tracker doc has no "Wayfinding operations" section, work from its prose and mirror the local-markdown conventions it describes. If no tracker has been provided, default to the local-markdown tracker.
 
@@ -39,7 +39,7 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 ## Decisions so far
 
-<!-- the index, one entry per closed ticket, enough to judge relevance, then fetch the full body of the linked ticket for the detail it holds. Front-load the verdict, use plain English, no jargon, under ~50 words. Remove this comment before saving. -->
+<!-- the index, one entry per closed in-scope ticket, enough to judge relevance, then fetch the full body of the linked ticket for the detail it holds. Front-load the verdict, use plain English, no jargon, under ~50 words. Remove this comment before saving. -->
 
 - [<closed ticket title>](link): <verdict-first gist, under ~50 words>
 
@@ -106,7 +106,7 @@ Fog only ever gathers _toward_ the destination. The destination fixes the scope,
 
 Out-of-scope work never graduates. The frontier stops at the destination, so it returns only if the destination is redrawn, and then as a fresh effort, not a resumption.
 
-Ruling something out of scope is a scoping act, not a step on the route. When a ticket that already exists turns out to sit past the destination, mis-scoped in while charting, or exposed by a resolution, **close it** (a closed ticket is unambiguously off the frontier) and leave one line in the **Out of scope** section (in the format shown in the map template): `- [<closed ticket title>](link) <why this sits beyond the destination>`. If you consciously rule something out of scope without a ticket, use: `- Ruled out: <why>`. These entries stay out of **Decisions so far**, which records the route actually walked, a scope boundary isn't a step on it.
+Ruling something out of scope is a scoping act, not a step on the route. When a ticket that already exists turns out to sit past the destination, mis-scoped in while charting, or exposed by a resolution, **close it** (a closed ticket is unambiguously off the frontier) and leave one line in the **Out of scope** section (in the format shown in the map template): `- [<closed ticket title>](link): <why this sits beyond the destination>`. If you consciously rule something out of scope without a ticket, use: `- Ruled out: <why>`. These entries stay out of **Decisions so far**, which records only the route actually walked. The reason lives in the linked ticket's `## Answer`.
 
 ## Invocation
 
