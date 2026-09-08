@@ -112,7 +112,7 @@ Ruling something out of scope is a scoping act, not a step on the route. When a 
 
 Work resolves at most one non-research ticket per session, or up to three research tickets in parallel.
 
-Common rules apply to both modes below. A session claims a ticket by assigning it to the dev driving the map, first, before any work. The `## Answer` format is:
+Common rules apply to both modes below. A session claims a ticket first, before any work, with the tracker's claim operation. Treat a claimed ticket as untakeable. If you need a claimed ticket, ask the user before taking it. The `## Answer` format is:
 
 ```markdown
 ## Answer
