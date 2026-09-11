@@ -1,4 +1,4 @@
-This directory contains skills — tools for daily workflow and coding work. The following README.md files give a map of different groups of skills in this repo. 
+This is **forge-skills**, a collection of skills: tools for daily workflow and coding work. The following README.md files give a map of different groups of skills in this repo.
  
 - engineering/README.md
 - productivity/README.md

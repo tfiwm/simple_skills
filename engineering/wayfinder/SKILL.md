@@ -22,7 +22,7 @@ The map is a single issue on this repo's issue tracker, labelled `wayfinder:map`
 
 The map is an **index**, not a store. Each ticket records its decision once in its `## Answer` comment. The map holds only a gist plus a link.
 
-**Where the map, its child tickets, blocking, and frontier queries physically live is tracker-specific.** The **frontier** is the open, unblocked, unclaimed child tickets, the edge of the known. The issue tracker should have been provided to you; if not, call the Skill tool with `setup-matt-pocock-skills`, then fall back to the local-markdown tracker if setup does not produce one. Read `docs/agents/issue-tracker.md` for the tracker in use. Consult its "Wayfinding operations" section for how _this_ repo expresses them. If the tracker doc has no "Wayfinding operations" section, work from its prose and mirror the local-markdown conventions it describes.
+**Where the map, its child tickets, blocking, and frontier queries physically live is tracker-specific.** The **frontier** is the open, unblocked, unclaimed child tickets, the edge of the known. The issue tracker should have been provided to you; if not, call the Skill tool with `setup-forge-skills`, then fall back to the local-markdown tracker if setup does not produce one. Read `docs/agents/issue-tracker.md` for the tracker in use. Consult its "Wayfinding operations" section for how _this_ repo expresses them. If the tracker doc has no "Wayfinding operations" section, work from its prose and mirror the local-markdown conventions it describes.
 
 ### The map body
 
