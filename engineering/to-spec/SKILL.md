@@ -1,75 +1,91 @@
 ---
 name: to-spec
-description: "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed."
+description: "Turn the current conversation into a spec and publish it to the project issue tracker: no interview by default; grill only for gaps you cannot safely assume."
 disable-model-invocation: true
 ---
 
-This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
+This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user by default; synthesize what you already know. The one exception is the seam check in Process step 2.
 
-The issue tracker and triage label vocabulary should have been provided to you. If not, tell the user to run `setup-forge-skills` skill.
+Never invent details. If the conversation leaves a gap, assume only when the conversation or codebase supports the assumption and it is safe to assume. Otherwise, call the Skill tool twice, once with `grilling` and once with `domain-modeling`, to clarify the gap before writing the spec.
+
+The issue tracker and triage label vocabulary should have been provided to you. If not, call the skill tool with name `setup-forge-skills` before continuing.
 
 ## Process
 
 1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
+2. Sketch out the seams at which you're going to test the feature. Prefer existing seams to new ones. Use the highest seam possible, the one closest to the caller, so a single seam covers the most behavior. If you need a new seam, propose it as high as you can. The fewer seams across the codebase, the better; the ideal number is one.
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+3. Write the spec using the template below.
 
-<spec-template>
+4. Publish it to the project issue tracker. If a spec for this feature already exists and no tickets have been cut from it, update that spec. Otherwise, open a new one.
+
+5. Apply the `ready-for-agent` triage label. No additional triage is needed.
+
+```markdown
+<!-- Local tracker: keep the heading and the Status line below. Real tracker: the issue title field and the `ready-for-agent` label carry them, so delete this comment, the heading, and the Status line. -->
+
+# <one-line problem statement>
+
+**Status:** ready-for-agent
 
 ## Problem Statement
 
-The problem that the user is facing, from the user's perspective.
+<!-- The problem this change solves, from the perspective of whoever feels it: a user, a developer, an operator, or the maintainer. -->
+
+<problem statement>
 
 ## Solution
 
-The solution to the problem, from the user's perspective.
+<!-- The solution to the problem, from the same perspective. For behavior-preserving changes, state the technical result instead. -->
+
+<solution>
+
+## Assumptions
+
+<!-- Only record an assumption when something supports it and assuming is safe. State the supporting evidence with each one. Example: Sessions expire after 24 hours, because the existing token flow already does this and this change does not touch it. -->
+
+- <assumption>: <supporting evidence>
 
 ## User Stories
 
-A LONG, numbered list of user stories. Each user story should be in the format of:
+<!-- One story per distinct actor-visible behavior, including error and edge cases. Each story must be independently testable. Actors include end users, developers, operators, and downstream systems. Example: As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending. -->
 
 1. As an <actor>, I want a <feature>, so that <benefit>
 
-<user-story-example>
-1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
-</user-story-example>
+<!-- Behavior-preserving changes: replace the User Stories heading and list with the Invariants heading and list below. -->
 
-This list of user stories should be extremely extensive and cover all aspects of the feature.
+## Invariants
+
+<!-- Example: Given an empty cart, checkout still rejects the request. -->
+
+1. Given <situation>, <observable behavior> stays the same.
 
 ## Implementation Decisions
 
-A list of implementation decisions that were made. This can include:
+<!-- The implementation decisions made. They can cover the modules built or modified, their interfaces, technical clarifications, architecture, schema changes, API contracts, and interactions. Do not include file paths or code snippets: they go stale. Exception: a prototype snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape) may be inlined and noted as coming from a prototype. -->
 
-- The modules that will be built/modified
-- The interfaces of those modules that will be modified
-- Technical clarifications from the developer
-- Architectural decisions
-- Schema changes
-- API contracts
-- Specific interactions
-
-Do NOT include specific file paths or code snippets. They may end up being outdated very quickly.
-
-Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
+- <decision>
 
 ## Testing Decisions
 
-A list of testing decisions that were made. Include:
+<!-- The testing decisions made: the seams chosen in Process step 2 and the tests at each, what makes a good test (external behavior only), and prior art in the codebase. -->
 
-- A description of what makes a good test (only test external behavior, not implementation details)
-- Which modules will be tested
-- Prior art for the tests (i.e. similar types of tests in the codebase)
+- <testing decision>
 
 ## Out of Scope
 
-A description of the things that are out of scope for this spec.
+<!-- What is out of scope for this spec. -->
+
+- <out of scope item>
 
 ## Further Notes
 
-Any further notes about the feature.
+<!-- Any further notes about the feature. -->
 
-</spec-template>
+<notes>
+```
+
+Remove the comments before publishing.
