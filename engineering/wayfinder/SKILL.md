@@ -41,7 +41,7 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 <!-- the index, one entry per closed in-scope ticket, enough to judge relevance, then fetch the full body of the linked ticket for the detail it holds. Front-load the verdict, use plain English, no jargon, under ~50 words. Remove this comment before saving. -->
 
-- [<closed ticket title>](link): <verdict-first gist, under ~50 words>
+- [<closed ticket title>](link): <verdict-first gist, under ~50 words> (confidence: <high|medium|low>, research only)
 
 ## Not yet specified
 
@@ -76,7 +76,15 @@ A session **claims** a ticket **first**, before any work, with the tracker's cla
 
 Blocking uses the tracker's **native** dependency relationship because it renders the frontier _visually_ in the tracker's own UI, so the human sees what's takeable without opening the map. Only a tracker that lacks native blocking falls back to a body convention. A ticket is **unblocked** when every ticket blocking it is closed.
 
-The answer isn't part of the body, it's recorded on resolution (see [Work through the map](#work-through-the-map)). Assets created while resolving a ticket are linked from the `## Answer` comment, not pasted in. No branch naming rule: use whatever link the skill returns.
+The answer isn't part of the body, it's recorded on resolution (see [Work through the map](#work-through-the-map)). Assets created while resolving a ticket are linked from the `## Answer` comment, not pasted in. No branch naming rule: use whatever link the skill returns. The `## Answer` comment uses this format:
+
+```markdown
+## Answer
+
+<1-2 sentence verdict in plain English: what was decided or found, and why in brief.>
+
+<Asset links and resulting facts later tickets depend on, or "none".>
+```
 
 ## Ticket Types
 
@@ -110,37 +118,29 @@ Ruling something out of scope is a scoping act, not a step on the route. When a 
 
 ## Invocation
 
-Work resolves at most one non-research ticket per session, or up to three research tickets in parallel.
-
-Common rules apply to both modes below. A session claims a ticket first, before any work, with the tracker's claim operation. Treat a claimed ticket as untakeable. If you need a claimed ticket, ask the user before taking it. The `## Answer` format is:
-
-```markdown
-## Answer
-
-<1–2 sentence verdict in plain English: what was decided or found, and why in brief.>
-```
-
-The Decisions so far append is the one shared write. Fetch the map fresh before appending; if another session appended since your last fetch, re-read and append after it. The user may run unblocked tickets in parallel, so expect other sessions to edit the tracker concurrently.
+Two modes: chart a loose idea into a map, or work an existing map. Work resolves at most one non-research ticket per session, or up to three research tickets in parallel.
 
 ### Chart the map
 
 User invokes with a loose idea.
 
 1. **Name the destination.** Call the Skill tool twice, once with `grilling` and once with `domain-modeling`, to pin down what this map is finding its way to; the spec, decision, or change. The destination fixes the scope, so it's settled first.
-2. **Map the frontier.** Grill again, this time, fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog**, the way to the destination is already clear, the whole journey small enough for one session, you don't need a map. Stop and ask the user how they'd like to proceed.
+2. **Map the frontier.** Grill again, this time fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog and no open decisions**, nothing is left to decide or investigate, the way to the destination is already clear, and you don't need a map. Stop and ask the user how they'd like to proceed.
 3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions so far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map. Then wire blocking edges in a **second pass** (issues need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog, the **Not yet specified** section.
 5. Stop - charting builds the map and tickets; it resolves nothing. Tell the user how many research tickets await on the frontier.
 
 ### Work through the map
 
-User invokes with a map (URL or number). Tickets are **optional**, without them, you pick, not the user.
+User invokes with a map (URL or number). Tickets are **optional**: without them, you pick, not the user.
 
 1. Load the **map**, the low-res view, not every ticket body.
-2. Choose tickets. If the user named tickets, use them: one ticket of any type, or up to three research tickets. Otherwise take the first frontier ticket the tracker's frontier query returns. If it is research, you may take up to two more unblocked research tickets to fill a batch of three. **Claim each** with the tracker operation before any work.
+2. Choose tickets. If the user named tickets, use them: one ticket of any type, or up to three research tickets. Otherwise take the first frontier ticket the tracker's frontier query returns. If it is research, you may take up to two more unblocked research tickets to fill a batch of three. **Claim each** with the tracker operation before any work (see [Tickets](#tickets) for claim rules). Treat a claimed ticket as untakeable; if you need a claimed ticket, ask the user first.
 3. Resolve by type, after you **fetch full body of each ticket**. If needed, fetch the full body of any related or closed tickets as well.
    - Research (AFK) never resolves by your own hand. Run one subagent per ticket that calls the Skill tool with `research` on the ticket's question. Name the save path from the tracker's Wayfinding operations; if it names none, use the research default. The subagent runs the research itself and returns its Verdict-File-Confidence-Gaps block.
-   - Other types: invoke the skills the `## Notes` block names, if any. If none of those skills fit the question either, ask the user how to proceed.
-4. Record each resolution. Post the `## Answer` comment with verdict plus asset link (file link for research, prototype link for prototype). **Close** the ticket. Append a context pointer to the map's Decisions so far, with confidence for research. Keep it minimal. The detail lives in linked artifacts (research file, prototype link, ticket comments). The comment itself is a signpost, not a store. Carry gaps into fog and follow-up tickets.
+   - Other types: invoke the skills the ticket type mandates (see [Ticket Types](#ticket-types)), plus any skills the `## Notes` block names. If none of those skills fit the question, ask the user how to proceed.
+4. Record each resolution. Post the `## Answer` comment in the ticket's Answer format (see [Tickets](#tickets)). **Close** the ticket. Append a context pointer to the map's Decisions so far, with confidence for research. Keep it minimal. The detail lives in linked artifacts (research file, prototype link, ticket comments). The comment itself is a signpost, not a store. Carry gaps into fog and follow-up tickets.
 5. Add newly-surfaced tickets (Chart step 4's create-then-wire pattern: create first, wire blocking edges second). Graduate any fog the answer has made specifiable. Clear each graduated patch from **Not yet specified** so it lives only as its new ticket. If this ticket or another sits beyond the destination, rule it out of scope. Do not resolve it on the route. If the decision invalidates other parts of the map, close those tickets with the reason in their `## Answer`; never delete them.
 6. Close the map when done. If no open tickets remain and **Not yet specified** is empty, the way is clear: close the map and tell the user. If no open tickets remain but fog bullets remain, the map is stuck, not done: leave the map open and report what still blocks graduation.
+
+The Decisions so far append is the one shared write. Fetch the map fresh before appending; if another session appended since your last fetch, re-read and append after it. The user may run unblocked tickets in parallel, so expect other sessions to edit the tracker concurrently.
