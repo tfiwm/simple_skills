@@ -7,6 +7,8 @@ Issues and specs for this repo live as markdown files in `scratch/`.
 - One feature per directory: `scratch/<feature-slug>/`
 - The spec is `scratch/<feature-slug>/spec.md`
 - Implementation issues are one file per ticket at `scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01`, never a single combined tickets file
+- Feature slug: reuse an existing slug when a spec or issue for the feature already lives under `scratch/<feature-slug>/`. Otherwise derive it from the feature name: lowercase ASCII, words joined with hyphens, filler words dropped, 2-5 words. List `scratch/` before creating a directory and ask the user only on a real collision or ambiguity.
+- Commit policy: leave these files untracked; do not commit them unless the user asks. A fresh clone or separate worktree will not see uncommitted issues, so the user commits and pushes when sharing is needed.
 - Triage state is recorded as a `Status:` line near the top of each issue file (see `triage-labels.md` for the role strings)
 - Comments and conversation history append to the bottom of the file under a `## Comments` heading
 
