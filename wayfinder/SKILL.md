@@ -83,6 +83,8 @@ The answer isn't part of the body, it's recorded on resolution (see [Work throug
 
 <1-2 sentence verdict in plain English: what was decided or found, and why in brief.>
 
+<Detail a later session needs: rationale, constraints, caveats, and rejected options. Omit only when the verdict covers it.>
+
 <Asset links and resulting facts later tickets depend on, or "none".>
 ```
 
@@ -139,7 +141,7 @@ User invokes with a map (URL or number). Tickets are **optional**: without them,
 3. Resolve by type, after you **fetch full body of each ticket**. If needed, fetch the full body of any related or closed tickets as well.
    - Research (AFK) never resolves by your own hand. Run one subagent per ticket that calls the Skill tool with `research` on the ticket's question. Name the save path from the tracker's Wayfinding operations; if it names none, use the research default. The subagent runs the research itself and returns its Verdict-File-Confidence-Gaps block.
    - Other types: invoke the skills the ticket type mandates (see [Ticket Types](#ticket-types)), plus any skills the `## Notes` block names. If none of those skills fit the question, ask the user how to proceed.
-4. Record each resolution. Post the `## Answer` comment in the ticket's Answer format (see [Tickets](#tickets)). **Close** the ticket. Append a context pointer to the map's Decisions so far, with confidence for research. Keep it minimal. The detail lives in linked artifacts (research file, prototype link, ticket comments). The comment itself is a signpost, not a store. Carry gaps into fog and follow-up tickets.
+4. Record each resolution. Post the `## Answer` comment in the ticket's Answer format (see [Tickets](#tickets)). **Close** the ticket. Append a context pointer to the map's Decisions so far, with confidence for research. Keep the map entry minimal. The verdict leads the Answer so it scans. The detail a later session needs sits below it, unless a linked artifact (research file, prototype) already holds it. Carry gaps into fog and follow-up tickets.
 5. Add newly-surfaced tickets (Chart step 4's create-then-wire pattern: create first, wire blocking edges second). Graduate any fog the answer has made specifiable. Clear each graduated patch from **Not yet specified** so it lives only as its new ticket. If this ticket or another sits beyond the destination, rule it out of scope. Do not resolve it on the route. If the decision invalidates other parts of the map, close those tickets with the reason in their `## Answer`; never delete them.
 6. Close the map when done. If no open tickets remain and **Not yet specified** is empty, the way is clear: close the map and tell the user. If no open tickets remain but fog bullets remain, the map is stuck, not done: leave the map open and report what still blocks graduation.
 
