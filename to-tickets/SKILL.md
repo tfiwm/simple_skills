@@ -26,20 +26,32 @@ Look for opportunities to prefactor the code to make the implementation easier. 
 
 Break the work into **tickets**: one vertical slice per ticket.
 
-<vertical-slice-rules>
+#### Vertical slice rules
 
 - Each slice cuts a narrow but COMPLETE path through every layer (schema, API, UI, tests): vertical, NOT a horizontal slice of one layer
 - A completed slice is demoable or verifiable on its own
 - Each slice is sized to fit in a single fresh context window
-- Any prefactoring should be done first
+- Prefactor tickets come first: the prefactoring you found in step 2 lands before any slice that depends on it
 
-</vertical-slice-rules>
+#### Wide refactors
+
+**Wide refactors are the exception to vertical slicing.** A **wide refactor** is one mechanical change (rename a column, retype a shared symbol) whose **blast radius** fans across the whole codebase, so a single edit breaks thousands of call sites at once and no vertical slice can land green. Don't force it into a single slice. Sequence it as **expand-contract**:
+
+1. **Expand**: add the new form beside the old so nothing breaks.
+2. **Migrate**: move the call sites over in batches sized by blast radius (per package, per directory), one ticket per batch, each blocked by the expand. CI stays green batch to batch because the old form still exists.
+3. **Contract**: delete the old form once no caller remains, in a ticket blocked by every migrate batch.
+
+When even the batches can't stay green alone, keep the same sequence but route it through a `refactor/<name>` integration branch:
+
+- Create the branch from main before the batches start.
+- Each batch ticket branches from the integration branch and merges back into it.
+- A final integrate-and-verify ticket, blocked by every batch, merges the branch into main and runs the full verification suite there. Green is promised only there.
+
+#### Blocking edges
 
 Give each ticket its **blocking edges**: the other tickets that must complete before it can start. A ticket with no blockers can start immediately.
 
 Blocking edges must never form a cycle: no ticket may transitively block itself. Verify this before publishing.
-
-**Wide refactors are the exception to vertical slicing.** A **wide refactor** is one mechanical change (rename a column, retype a shared symbol) whose **blast radius** fans across the whole codebase, so a single edit breaks thousands of call sites at once and no vertical slice can land green. Don't force it into a single vertical slice; sequence it as **expand-contract**. First expand: add the new form beside the old so nothing breaks. Then migrate the call sites over in batches sized by blast radius (per package, per directory), each batch its own ticket blocked by the expand, keeping CI green batch to batch because the old form still exists. Finally contract: delete the old form once no caller remains, in a ticket blocked by every migrate batch. When even the batches can't stay green alone, keep the sequence but let them share a `refactor/<name>` integration branch that all block a final integrate-and-verify ticket; green is promised only there. Create the branch from main before the batches start. Each batch ticket branches from the integration branch and merges back into it. The final ticket merges the integration branch into main and runs the full verification suite there.
 
 ### 4. Quiz the user
 
@@ -50,14 +62,12 @@ Present the proposed breakdown as a numbered list. For each ticket, show:
 - **What it delivers**: the end-to-end behaviour this ticket makes work
 - **Acceptance criteria**: the draft checks that prove the ticket is done
 
-<acceptance-criteria-rules>
+#### Acceptance criteria rules
 
 - Each criterion must be objectively checkable, phrased as an observable result: a command and its output, an API response, or a UI state.
 - Ban untestable wording. Good: "`GET /health` returns 200 with `{"status":"ok"}`." Bad: "The health endpoint works."
 - The implementing agent verifies every criterion it can check on its own.
 - When no automated check exists, phrase the criterion as a manual check and mark it for human verification. The implementing agent asks a human only for those.
-
-</acceptance-criteria-rules>
 
 Ask the user:
 
