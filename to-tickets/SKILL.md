@@ -79,62 +79,68 @@ Iterate until the user approves the breakdown.
 
 ### 5. Publish the tickets to the configured tracker
 
-Publish the approved tickets. **How** depends on the tracker `/setup-forge-skills` configured; the tickets are the same either way, only the shape of the blocking edges changes:
+Publish the approved tickets. **How** depends on the tracker `/setup-forge-skills` configured; the tickets are the same either way, only the shape of the blocking edges changes.
 
-- **Local files** → write one file per ticket under `scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists only the numbers it depends on, e.g. `01, 03`. A blocker's number is always lower than the ticket's own number, so never reference a title. Use this template, one ticket per file, never a single combined file:
+#### Ticket content rules
 
-  **Feature slug**: reuse the slug when a source spec or issue already lives under `scratch/<slug>/`. Otherwise derive it from the feature name: lowercase ASCII, words joined with hyphens, filler words dropped, 2-5 words. List `scratch/` before creating a directory. Reuse a directory for the same feature. Ask the user only on a real collision or ambiguity.
+Describe the end-to-end behaviour from the user's perspective, not as a layer-by-layer implementation list. Include a parent reference only when the work came from an existing issue. Add a "Not in this ticket" note only when the slice could be confused with neighboring work; omit it otherwise. Avoid specific file paths or code snippets; they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
 
-  **Commit policy**: leave ticket files untracked. Do not commit them unless the user asks. A fresh clone or separate worktree will not see uncommitted tickets, so the user commits and pushes when that sharing is needed.
+#### Local files
 
-  <local-ticket-template>
+Write one file per ticket under `scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists only the numbers it depends on, e.g. `01, 03`. A blocker's number is always lower than the ticket's own number, so never reference a title. Use this template, one ticket per file, never a single combined file:
 
-  # <NN>: <Ticket title>
+**Feature slug**: reuse the slug when a source spec or issue already lives under `scratch/<slug>/`. Otherwise derive it from the feature name: lowercase ASCII, words joined with hyphens, filler words dropped, 2-5 words. List `scratch/` before creating a directory. Reuse a directory for the same feature. Ask the user only on a real collision or ambiguity.
 
-  **Parent:** <parent issue number and title>
+**Commit policy**: leave ticket files untracked. Do not commit them unless the user asks. A fresh clone or separate worktree will not see uncommitted tickets, so the user commits and pushes when that sharing is needed.
 
-  **Blocked by:** <blocker numbers, e.g. 01, 03, or "None (can start immediately)">
+```markdown
+# <NN>: <Ticket title>
 
-  **Status:** ready-for-agent
+**Parent:** <parent issue number and title>
 
-  ## What to build
+**Blocked by:** <blocker numbers, e.g. 01, 03, or "None (can start immediately)">
 
-  <end-to-end behaviour this ticket makes work>
+**Status:** ready-for-agent
 
-  ## Acceptance criteria
+## What to build
 
-  - [ ] <acceptance criterion>
-  - [ ] <acceptance criterion>
+<end-to-end behaviour this ticket makes work>
 
-  ## Not in this ticket
+## Acceptance criteria
 
-  <work deliberately excluded>
+- [ ] <acceptance criterion>
+- [ ] <acceptance criterion>
 
-  </local-ticket-template>
+## Not in this ticket
 
-- **A real issue tracker (GitHub, GitLab, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Title each issue with the ticket title only; the tracker assigns its own identifier, so the `<NN>` numbering applies to local files only. Use the platform's native parent link when it has one; otherwise write the parent's ID plus title or short description as text. Use the platform's native blocking / sub-issue relationship where it has one; otherwise list each blocking issue by its stable identifier (`#123` on GitHub and GitLab, `ENG-123` on Linear), never by title. Apply the `ready-for-agent` triage label unless instructed otherwise. Use this template, one issue per ticket:
+<work deliberately excluded>
+```
 
-  <issue-template>
+#### A real issue tracker (GitHub, GitLab, …)
 
-  **Parent:** <parent ID plus title>
+Publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Title each issue with the ticket title only; the tracker assigns its own identifier, so the `<NN>` numbering applies to local files only. Use the platform's native parent link when it has one; otherwise write the parent's ID plus title or short description as text. Use the platform's native blocking / sub-issue relationship where it has one; otherwise list each blocking issue by its stable identifier (`#123` on GitHub and GitLab, `ENG-123` on Linear), never by title. Apply the `ready-for-agent` triage label unless instructed otherwise. Use this template, one issue per ticket:
 
-  **Blocked by:** <blocking issue identifiers, or "None (can start immediately)">
+```markdown
+## What to build
 
-  ## What to build
+<end-to-end behaviour this ticket makes work>
 
-  <end-to-end behaviour this ticket makes work>
+## Acceptance criteria
 
-  ## Acceptance criteria
+- [ ] <acceptance criterion>
+- [ ] <acceptance criterion>
 
-  - [ ] <acceptance criterion>
-  - [ ] <acceptance criterion>
+## Not in this ticket
 
-  ## Not in this ticket
+<work deliberately excluded>
+```
 
-  <work deliberately excluded>
+When the platform has no native parent or blocking relationship, add the missing line at the top of the body, before `## What to build`:
 
-  </issue-template>
+```markdown
+**Parent:** <parent ID plus title>
 
-In either form, describe the end-to-end behaviour from the user's perspective, not as a layer-by-layer implementation list. Include a parent reference only when the work came from an existing issue. Add a "Not in this ticket" note only when the slice could be confused with neighboring work; omit it otherwise. Avoid specific file paths or code snippets; they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
+**Blocked by:** <blocking issue identifiers, or "None (can start immediately)">
+```
 
-After publishing, stop and hand the backlog to the user. Do not close or modify the parent issue.
+After publishing, stop and hand the published tickets to the user. Do not close or modify the parent issue.
