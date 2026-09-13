@@ -32,12 +32,12 @@ Set the ticket's `Status:` line to `resolved`. Use `wontfix` when the work is re
 
 ## Wayfinding operations
 
-Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.
+Used by `/wayfinder`. The **map** is a file with one **child** file per ticket. Child tickets live in a `decisions/` folder, separate from implementation tickets.
 
 - **Map**: `scratch/<effort>/map.md` (the Notes / Decisions-so-far / Fog body).
-- **Child ticket**: `scratch/<effort>/issues/NN-<slug>.md`, numbered from `01`, with the question in the body. A `Type:` line records the ticket type (`research`/`prototype`/`grilling`/`task`); a `Status:` line records `claimed`/`resolved`.
-- **Research findings**: each research ticket's findings live at `scratch/<effort>/research/NN-<slug>.md`, mirroring the `issues/` numbering; the file links back to its ticket.
+- **Child ticket**: `scratch/<effort>/decisions/NN-<slug>.md`, numbered from `01` within `decisions/`, with the question in the body. A `Type:` line records the ticket type (`research`/`prototype`/`grilling`/`task`); a `Status:` line records `claimed`/`resolved`.
+- **Research findings**: each research ticket's findings live at `scratch/<effort>/research/NN-<slug>.md`, mirroring the `decisions/` numbering; the file links back to its ticket.
 - **Blocking**: a `Blocked by: NN, NN` line near the top. A ticket is unblocked when every file it lists is terminal (`resolved` or `wontfix`).
-- **Frontier**: scan `scratch/<effort>/issues/` for files that are open, unblocked, and unclaimed; first by number wins.
+- **Frontier**: scan `scratch/<effort>/decisions/` for files that are open, unblocked, and unclaimed; first by number wins.
 - **Claim**: set `Status: claimed` and save before any work.
 - **Resolve**: append the answer under an `## Answer` heading, set `Status: resolved`, then append a context pointer (gist + link) to the map's Decisions-so-far in `map.md`. The `map.md` append is not atomic under concurrent sessions. Fetch the map fresh right before appending.
