@@ -29,6 +29,12 @@ The map is an **index**, not a store. Each ticket records its decision once in i
 The whole map at low resolution, loaded once per session. Open tickets are **not** listed. They are open child issues, found by query.
 
 ```markdown
+<!-- Local markdown tracker: keep the title heading and the Status line below and remove this comment; implementation tickets converted from this map reference the title in their Parent line. Hosted issue tracker: the issue title and native open/closed state carry them, so delete this comment, the heading, and the Status line. -->
+
+# <map title>
+
+Status: open
+
 ## Destination
 
 <what reaching the end of this map looks like. The spec, decision, or change this effort is finding its way to. One or two lines; every session orients to it before choosing a ticket.>

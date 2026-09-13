@@ -56,6 +56,8 @@ Ask the vocabulary question only when `triage` is installed:
 
 The defaults are the five canonical roles, each label string equal to its name: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`), collect the overrides so `to-spec`, `to-tickets`, and `triage` apply existing labels instead of creating duplicates.
 
+If the tracker does not create labels on demand, create them after writing the mapping. GitHub rejects a label it does not have; GitLab creates missing labels on first use. On GitHub, create each mapped string plus `wayfinder:map`, `wayfinder:research`, `wayfinder:prototype`, `wayfinder:grilling`, and `wayfinder:task`, using the label-creation command in [issue-tracker-github.md](./issue-tracker-github.md). Ask the user before creating labels, because this writes to the tracker.
+
 **Section C: Domain docs.** Default to **single-context** (one `CONTEXT.md` + `docs/adr/` at the repo root). This fits almost every repo; write it without asking.
 
 Offer **multi-context** (a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files) only when exploration found monorepo signals. Then confirm which layout they want.
