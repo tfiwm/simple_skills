@@ -8,11 +8,11 @@ Issues and specs for this repo live as markdown files in `scratch/`.
 - The spec is `scratch/<feature-slug>/spec.md`
 - Implementation issues are one file per ticket at `scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in creation order, never a single combined tickets file
 - A ticket file starts with a `# <NN>: <title>` heading, followed by metadata lines near the top: `Parent:` (only when the work has a parent), `Blocked by:`, and `Status:`
-- Feature slug: reuse an existing slug when a spec or issue for the feature already lives under `scratch/<feature-slug>/`. Otherwise derive it from the feature name: lowercase ASCII, words joined with hyphens, filler words dropped, 2-5 words. List `scratch/` before creating a directory and ask the user only on a real collision or ambiguity.
+- Feature slug: reuse an existing slug when a spec, issue, or wayfinder map already lives under `scratch/<feature-slug>/`. Otherwise derive it from the feature name: lowercase ASCII, words joined with hyphens, filler words dropped, 2-5 words. List `scratch/` before creating a directory and ask the user only on a real collision or ambiguity.
 - Commit policy: leave these files untracked; do not commit them unless the user asks. A fresh clone or separate worktree will not see uncommitted issues, so the user commits and pushes when sharing is needed.
 - `Status:` records the ticket's state. Active implementation tickets use the triage role strings mapped in `docs/agents/triage-labels.md`, and the implementing agent sets `resolved` once the work lands. Wayfinder tickets use `claimed`/`resolved` (see Wayfinding operations below).
 - `Blocked by:` lists the numbers of the tickets that must complete first, for example `Blocked by: 01, 03`. A blocker clears when its file is terminal (`resolved` or `wontfix`).
-- `Parent:` names the parent when the work has one. On this tracker the parent is usually the spec, so write its path plus title, for example `scratch/<feature-slug>/spec.md` plus the spec title. Omit the line when there is no parent.
+- `Parent:` names the parent when the work has one. On this tracker the parent is usually the spec (`scratch/<feature-slug>/spec.md` plus the spec title) or, after a wayfinder session, the map (`scratch/<effort>/map.md` plus the map title). Omit the line when there is no parent.
 - Comments and conversation history append to the bottom of the file under a `## Comments` heading
 
 ## When a skill says "publish to the issue tracker"
