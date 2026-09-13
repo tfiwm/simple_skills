@@ -13,3 +13,5 @@ Run typechecking regularly, single test files regularly, and the full test suite
 Once done, use /code-review to review the work.
 
 Commit your work to the current branch.
+
+Then mark the ticket done using the close workflow in `docs/agents/issue-tracker.md`: set `Status: resolved` on a local ticket file, or close it on a hosted issue tracker.

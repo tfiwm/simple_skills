@@ -1,6 +1,6 @@
 ---
 name: to-tickets
-description: Break a plan, spec, or the current conversation into tickets: thin vertical slices that run end to end, each declaring its blocking edges, published to the configured tracker (edges as text in one file per ticket locally, or native blocking links on a real tracker).
+description: Break a plan, spec, or the current conversation into tickets: thin vertical slices that run end to end, each declaring its blocking edges, published to the configured tracker.
 disable-model-invocation: true
 ---
 
@@ -79,46 +79,13 @@ Iterate until the user approves the breakdown.
 
 ### 5. Publish the tickets to the configured tracker
 
-Publish the approved tickets. **How** depends on the tracker `/setup-forge-skills` configured; the tickets are the same either way, only the shape of the blocking edges changes.
+Publish the approved tickets. Read `docs/agents/issue-tracker.md` for where they go and how their metadata is written.
 
 #### Ticket content rules
 
-Describe the end-to-end behaviour from the user's perspective, not as a layer-by-layer implementation list. Include a parent reference only when the work came from an existing issue. Add a "Not in this ticket" note only when the slice could be confused with neighboring work; omit it otherwise. Avoid specific file paths or code snippets; they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
+Describe the end-to-end behaviour from the user's perspective, not as a layer-by-layer implementation list. Include a parent reference only when the work came from an existing spec or issue. Add a "Not in this ticket" note only when the slice could be confused with neighboring work; omit it otherwise. Avoid specific file paths or code snippets; they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
 
-#### Local files
-
-Write one file per ticket under `scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists only the numbers it depends on, e.g. `01, 03`. A blocker's number is always lower than the ticket's own number, so never reference a title. Use this template, one ticket per file, never a single combined file:
-
-**Feature slug**: reuse the slug when a source spec or issue already lives under `scratch/<slug>/`. Otherwise derive it from the feature name: lowercase ASCII, words joined with hyphens, filler words dropped, 2-5 words. List `scratch/` before creating a directory. Reuse a directory for the same feature. Ask the user only on a real collision or ambiguity.
-
-**Commit policy**: leave ticket files untracked. Do not commit them unless the user asks. A fresh clone or separate worktree will not see uncommitted tickets, so the user commits and pushes when that sharing is needed.
-
-```markdown
-# <NN>: <Ticket title>
-
-**Parent:** <parent issue number and title>
-
-**Blocked by:** <blocker numbers, e.g. 01, 03, or "None (can start immediately)">
-
-**Status:** ready-for-agent
-
-## What to build
-
-<end-to-end behaviour this ticket makes work>
-
-## Acceptance criteria
-
-- [ ] <acceptance criterion>
-- [ ] <acceptance criterion>
-
-## Not in this ticket
-
-<work deliberately excluded>
-```
-
-#### A real issue tracker (GitHub, GitLab, …)
-
-Publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Title each issue with the ticket title only; the tracker assigns its own identifier, so the `<NN>` numbering applies to local files only. Use the platform's native parent link when it has one; otherwise write the parent's ID plus title or short description as text. Use the platform's native blocking / sub-issue relationship where it has one; otherwise list each blocking issue by its stable identifier (`#123` on GitHub and GitLab, `ENG-123` on Linear), never by title. Apply the `ready-for-agent` triage label unless instructed otherwise. Use this template, one issue per ticket:
+Every ticket body uses this template:
 
 ```markdown
 ## What to build
@@ -134,6 +101,21 @@ Publish one issue per ticket in dependency order (blockers first) so each ticket
 
 <work deliberately excluded>
 ```
+
+The ticket body is the same for both. Follow the branch below that matches the tracker named in `docs/agents/issue-tracker.md`: the local markdown tracker, or a hosted issue tracker such as GitHub or GitLab. Only the shape of the blocking edges and where the metadata is written change.
+
+#### Local markdown tracker
+
+The file layout, numbering, slug, commit policy, and metadata header come from `docs/agents/issue-tracker.md`. Two workflow rules:
+
+- Create the tickets blockers first, so the numbering reads in the order the work lands.
+- List each blocker by its number, never by title.
+
+Write `Status` using the label string that `docs/agents/triage-labels.md` maps to `ready-for-agent`. Omit the `Parent` line when the work has no parent.
+
+#### Hosted issue tracker (GitHub, GitLab, …)
+
+Publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Title each issue with the ticket title only; the tracker assigns its own identifier, so the `<NN>` numbering applies to the local markdown tracker only. Use the platform's native parent link when it has one; otherwise write the parent's ID plus title or short description as text. Use the platform's native blocking / sub-issue relationship where it has one; otherwise list each blocking issue by its stable identifier (`#123` on GitHub and GitLab, `ENG-123` on Linear), never by title. Apply the triage label that `docs/agents/triage-labels.md` maps to `ready-for-agent`, unless instructed otherwise.
 
 When the platform has no native parent or blocking relationship, add the missing line at the top of the body, before `## What to build`:
 

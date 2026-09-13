@@ -22,14 +22,14 @@ Check with the user that these seams match their expectations.
 
 4. Publish it to the project issue tracker. If a spec for this feature already exists and no tickets have been cut from it, update that spec. Otherwise, open a new one.
 
-5. Apply the `ready-for-agent` triage label. No additional triage is needed.
+5. Apply the triage label that `docs/agents/triage-labels.md` maps to `ready-for-agent`. No additional triage is needed.
 
 ```markdown
-<!-- Local tracker: keep the heading and the Status line below. Real tracker: the issue title field and the `ready-for-agent` label carry them, so delete this comment, the heading, and the Status line. -->
+<!-- Local markdown tracker: keep the heading and the Status line below. Hosted issue tracker: the issue title field and the triage label carry them, so delete this comment, the heading, and the Status line. -->
 
 # <one-line problem statement>
 
-**Status:** ready-for-agent
+**Status:** <the label `docs/agents/triage-labels.md` maps to `ready-for-agent`>
 
 ## Problem Statement
 
