@@ -43,7 +43,7 @@ When the user states how something works, check whether the code agrees. If you 
 
 ### Update CONTEXT.md inline
 
-When a term is resolved, update `CONTEXT.md` right there. Don't batch these up: capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
+When a term is resolved, update `CONTEXT.md` right there. Decide first which domain section of the file the term belongs to, then write it under that heading (see [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md)). If no existing domain fits, say so and either justify a new one or ask. Don't batch these up: capture them as they happen.
 
 `CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
 
