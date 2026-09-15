@@ -22,18 +22,17 @@ Look at the current repo to understand its starting state. Read whatever exists;
 
 - `git remote -v` and `.git/config`: is this a GitHub repo? Which one?
 - `AGENTS.md` and `CLAUDE.md` at the repo root: does either exist? Is there already an `## Agent skills` section in either?
-- `CONTEXT.md` and `CONTEXT-MAP.md` at the repo root
+- `CONTEXT.md` at the repo root
 - `docs/adr/` and any `src/*/docs/adr/` directories
 - `docs/agents/`: does this skill's prior output already exist?
 - `scratch/`: a sign that a local markdown tracker convention is already in use
 - Is the `triage` skill installed? (a `triage` skill folder alongside this one, or `triage` in your available skills.) This decides whether Section B asks the vocabulary question. Either way, write the mapping file.
-- Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repo; their absence means single-context, which is almost every repo.
 
 ### 2. Present findings and ask
 
 Summarise what's present and what's missing. Then take the sections in order. One section, one answer, then the next.
 
-Lead each section with the recommended answer so the user can accept it in a word. Give a one-line explainer only when the choice genuinely branches; skip the ask when exploration already settled it (Section B when `triage` isn't installed, Section C when there's no monorepo).
+Lead each section with the recommended answer so the user can accept it in a word. Give a one-line explainer only when the choice genuinely branches; skip the ask when exploration already settled it (Section B when `triage` isn't installed, and always for Section C).
 
 **Section A: Issue tracker.**
 
@@ -58,9 +57,7 @@ The defaults are the five canonical roles, each label string equal to its name: 
 
 If the tracker does not create labels on demand, create them after writing the mapping. GitHub rejects a label it does not have; GitLab creates missing labels on first use. On GitHub, create each mapped string plus `wayfinder:map`, `wayfinder:research`, `wayfinder:prototype`, `wayfinder:grilling`, and `wayfinder:task`, using the label-creation command in [issue-tracker-github.md](./issue-tracker-github.md). Ask the user before creating labels, because this writes to the tracker.
 
-**Section C: Domain docs.** Default to **single-context** (one `CONTEXT.md` + `docs/adr/` at the repo root). This fits almost every repo; write it without asking.
-
-Offer **multi-context** (a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files) only when exploration found monorepo signals. Then confirm which layout they want.
+**Section C: Domain docs.** Write the standard layout (one `CONTEXT.md` + `docs/adr/` at the repo root) without asking.
 
 ### 3. Confirm and edit
 
@@ -98,7 +95,7 @@ The block:
 
 ### Domain docs
 
-[one-line summary of layout: "single-context" or "multi-context"]. See `docs/agents/domain.md`.
+[one-line summary of the domain docs layout]. See `docs/agents/domain.md`.
 ```
 
 Include the `### Triage labels` sub-block and write `docs/agents/triage-labels.md` always, because `to-spec` and `to-tickets` use the mapping even when `triage` isn't installed.
