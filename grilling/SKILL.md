@@ -56,19 +56,34 @@ why you are asking.
 
 ## Handle answers
 
+- A decision is settled only by the user's answer. You may recommend and
+  propose, but never mark a decision settled without one.
+- If the plan already states a decision, treat it as settled. Do not re-ask.
+  Confirm only when the statement is ambiguous or clashes with a settled
+  decision.
+- Do not silently settle a decision the user has not stated. Put it to them
+  as a question with a recommended option.
 - If an answer is vague, restate it as a concrete decision and ask to confirm.
 - If the user cannot answer, park it, skip its sub-decisions, move on.
 - Look up facts yourself (files, tools, sub-agents). Never ask the user for a
-  fact you can find.
+  fact you can find. Do not block a round on a running search; treat it as
+  unsettled and ask the other ready questions. Ask questions that depend on
+  the fact only after the fact returns. If a search fails or the result is
+  unreliable, say so and ask how to proceed.
 
 ## How to ask
 
-Use the `question` tool when available: one call per round, recommended option
-first, feedback question last with "No additional feedback" as the first
-option. Otherwise send one numbered list per round. End every round with one
-open question: "Anything to correct or steer?"
+Use the `question` tool when available: send shared round context as prose
+first, then make one tool call for the whole round. Make the recommended
+option first and the feedback question last, with "No additional feedback" as
+its first option. Otherwise send one numbered list per round. End every round
+with one open question: "Anything to correct or steer?"
 
 ## Close-out
 
-Write a summary: each decision and its answer, one line each, plus parked
-decisions as unresolved. Ask the user to confirm. Do not act until they confirm.
+The session is done when no ready questions remain and no fact search is
+outstanding. Write a summary: each decision and its answer, one line each,
+plus parked decisions as unresolved. Ask the user to confirm. Do not act
+until they confirm. If the user stops before every branch is visited, end
+the session the same way: close out what is settled and list the rest as
+unresolved.
