@@ -1,6 +1,6 @@
 ---
 name: grilling
-description: Grill the user relentlessly about a plan, decision, or idea. Use when the user says 'grill me', wants to stress-test their thinking, or uses any other 'grill' trigger phrase.
+description: "Grills the user relentlessly about a plan, decision, or idea. Use when the user says 'grill me', wants to stress-test their thinking, or uses any other 'grill' trigger phrase."
 ---
 
 Interview the user until every decision behind their plan is settled. Treat the

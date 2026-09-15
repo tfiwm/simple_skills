@@ -1,6 +1,6 @@
 ---
 name: to-tickets
-description: Break a plan, spec, or the current conversation into tickets: thin vertical slices that run end to end, each declaring its blocking edges, published to the configured tracker.
+description: "Breaks a plan, spec, or the current conversation into tickets: thin vertical slices that run end to end, each declaring its blocking edges, published to the configured tracker."
 disable-model-invocation: true
 ---
 

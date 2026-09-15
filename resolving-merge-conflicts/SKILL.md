@@ -1,6 +1,6 @@
 ---
 name: resolving-merge-conflicts
-description: "Use when you need to resolve an in-progress git merge/rebase conflict."
+description: "Resolves an in-progress git merge or rebase conflict hunk by hunk, tracing each side's intent. Use when git reports conflicts or unmerged paths, or the user mentions a merge/rebase conflict."
 ---
 
 1. **See the current state** of the merge/rebase. Check git history, and the conflicting files.

@@ -1,6 +1,6 @@
 ---
 name: research
-description: Researches a question against primary sources when the user wants a topic researched, docs or API facts gathered, or reading legwork done. Trivial lookups get an inline answer; larger questions get a delegated run and a saved findings file.
+description: "Researches a question against primary sources when the user wants a topic researched, docs or API facts gathered, or reading legwork done. Trivial lookups get an inline answer; larger questions get a delegated run and a saved findings file."
 ---
 
 Run this research yourself, or delegate it to a background sub-agent and hand it these instructions as its job. Delegate when the work is large, long-running, should proceed in parallel with other work, or the caller explicitly asks to run this in parallel or as a sub-agent. Otherwise do it inline. Trivial lookups get a short inline answer under the rules below. When unsure, do it inline and offer to escalate. On a delegated run, relay only its Verdict-File-Confidence-Gaps block.

@@ -1,6 +1,6 @@
 ---
 name: to-spec
-description: "Turn the current conversation into a spec and publish it to the project issue tracker: no interview by default; grill only for gaps you cannot safely assume."
+description: "Turns the current conversation into a spec and publishes it to the project issue tracker: no interview by default; grill only for gaps you cannot safely assume."
 disable-model-invocation: true
 ---
 
