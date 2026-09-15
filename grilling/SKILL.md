@@ -10,10 +10,17 @@ plan as a tree: each decision has sub-decisions hanging off it.
 
 1. List the decisions the plan depends on. A question is ready when everything
    it depends on is settled.
-2. Ask up to 4 ready questions in one turn. Wait for all answers.
-3. Apply the answers. A settled decision unblocks its children. An answer that
-   contradicts a settled decision reopens that decision and everything under it.
-4. Repeat until no ready questions remain.
+2. Compose a round of up to 4 ready questions. Keep two questions in the same
+   round only when neither answer could change the other's meaning or its
+   options. Prefer questions from one branch of the tree; mix branches only
+   when that branch cannot fill the round.
+3. Ask the round in one turn. Give each question the context the user needs
+   to answer it well (see "Give the context needed to answer"). Wait for all
+   answers.
+4. Apply the answers. A settled decision unblocks its children. An answer that
+   contradicts a settled decision reopens that decision and everything under
+   it.
+5. Repeat until no ready questions remain.
 
 ## Write clear questions
 
